@@ -16,7 +16,7 @@ if (($args[0] -eq "-h") -or ($args[0] -eq "--help") -or ($args[0] -eq "/?") ){
     Exit
 }
 try{
-    $domainFull = $(Get-WmiObject -Namespace root\cimv2 -Class Win32_ComputerSystem | Select Domain) -split "=" -split "}" | Select-Object -Last 2
+    $domainFull = $(Get-WmiObject -Namespace root\cimv2 -Class Win32_ComputerSystem | Select Domain).Domain
     $domainName = $domainFull.Split(".")[0]
     $domainTLD = $domainFull.Split(".")[1]
     $counter = 0
